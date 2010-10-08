@@ -18,7 +18,7 @@ namespace Ninject.Extensions.Xml.Tests.XmlModuleTests
 		public XmlModuleContext()
 		{
 			kernel = new StandardKernel();
-			elementHandlers = new Dictionary<string, IXmlElementHandler> { { "bind", new BindElementHandler() } };
+			elementHandlers = new Dictionary<string, IXmlElementHandler> { { "bind", new BindElementHandler(kernel) } };
 		}
 	}
 

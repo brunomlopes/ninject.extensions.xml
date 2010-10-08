@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninject.Extensions.Xml", "src\Ninject.Extensions.Xml\Ninject.Extensions.Xml.csproj", "{4F3C09EF-016E-4B05-AB74-42214C8AAEA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninject.Extensions.Xml.Tests", "src\Ninject.Extensions.Xml.Tests\Ninject.Extensions.Xml.Tests.csproj", "{491EF6DE-86C0-40CE-962F-3B4D097A1730}"

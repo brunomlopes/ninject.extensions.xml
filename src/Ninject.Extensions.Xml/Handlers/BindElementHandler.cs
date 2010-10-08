@@ -21,19 +21,26 @@ namespace Ninject.Extensions.Xml.Handlers
 {
 	public class BindElementHandler : NinjectComponent, IXmlElementHandler
 	{
-		public string ElementName
+	    private readonly IKernel _kernel;
+
+	    public string ElementName
 		{
 			get { return "bind"; }
 		}
 
-		public void Handle(XmlModule module, XElement element)
+	    public BindElementHandler(IKernel kernel)
+	    {
+	        _kernel = kernel;
+	    }
+
+	    public void Handle(XmlModule module, XElement element)
 		{
 			XAttribute serviceAttribute = element.RequiredAttribute("service");
 
 			Type service = GetTypeFromAttributeValue(serviceAttribute);
 
 			var binding = new Binding(service);
-			var builder = new BindingBuilder<object>(binding);
+			var builder = new BindingBuilder<object>(binding, _kernel);
 
 			module.AddBinding(binding);
 
@@ -117,8 +124,15 @@ namespace Ninject.Extensions.Xml.Handlers
 			if (toAttribute == null)
 				return false;
 
-			Type implementation = GetTypeFromAttributeValue(toAttribute);
-			builder.To(implementation);
+            if (toAttribute.Value.ToLowerInvariant().Equals("self"))
+            {
+                builder.ToSelf();
+            }
+            else
+            {
+                Type implementation = GetTypeFromAttributeValue(toAttribute);
+                builder.To(implementation);
+            }
 
 			return true;
 		}

@@ -21,7 +21,7 @@ namespace Ninject.Extensions.Xml
 {
 	public class XmlModuleLoaderPlugin : NinjectComponent, IModuleLoaderPlugin
 	{
-		private static readonly string[] Extensions = new[] { ".xml" };
+		private static readonly string[] Extensions = new[] { ".xml", ".config" };
 
 		public IEnumerable<string> SupportedExtensions
 		{
